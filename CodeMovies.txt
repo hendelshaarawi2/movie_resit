@@ -1,0 +1,130 @@
+pi@raspberrypi:~ $ cd
+pi@raspberrypi:~ $ cd RSL
+pi@raspberrypi:~/RSL $ sudo apt install git
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+git is already the newest version (1:2.20.1-2+deb10u3).
+The following package was automatically installed and is no longer required:
+  python-colorzero
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+pi@raspberrypi:~/RSL $ git config --global user.name "hendelshaarawi2"
+pi@raspberrypi:~/RSL $ git config --user.email "hend.elshaarawi@hva.nl"
+error: unknown option `user.email'
+usage: git config [<options>]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    --worktree            use per-worktree config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+Action
+    --get                 get value: name [value-regex]
+    --get-all             get all values: key [value-regex]
+    --get-regexp          get values for regexp: name-regex [value-regex]
+    --get-urlmatch        get value specific for the URL: section[.var] URL
+    --replace-all         replace all matching variables: name value [value_regex]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [value-regex]
+    --unset-all           remove all matches: name [value-regex]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    -e, --edit            open an editor
+    --get-color           find the color configured: slot [default]
+    --get-colorbool       find the color setting: slot [stdout-is-tty]
+
+Type
+    -t, --type <>         value is given this type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    -z, --null            terminate values with NUL byte
+    --name-only           show variable names only
+    --includes            respect include directives on lookup
+    --show-origin         show origin of config (file, standard input, blob, command line)
+    --default <value>     with --get, use default value when missing entry
+
+pi@raspberrypi:~/RSL $ git config --global user.email "hend.elshaarawi@hva.nl"
+pi@raspberrypi:~/RSL $ mkdir movie-recommender
+pi@raspberrypi:~/RSL $ cd movie-recommender
+pi@raspberrypi:~/RSL/movie-recommender $ ls
+READMe.md
+pi@raspberrypi:~/RSL/movie-recommender $ git init
+Initialized empty Git repository in /home/pi/RSL/movie-recommender/.git/
+pi@raspberrypi:~/RSL/movie-recommender $ ls -a
+.  ..  .git  READMe.md
+pi@raspberrypi:~/RSL/movie-recommender $ ls -a .git
+.  ..  branches  config  description  HEAD  hooks  info  objects  refs
+pi@raspberrypi:~/RSL/movie-recommender $ git add README.md
+fatal: pathspec 'README.md' did not match any files
+pi@raspberrypi:~/RSL/movie-recommender $ git add --all
+pi@raspberrypi:~/RSL/movie-recommender $ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   READMe.md
+
+pi@raspberrypi:~/RSL/movie-recommender $ git commit -am "add README.md"
+[master (root-commit) fef2443] add README.md
+ 1 file changed, 1 insertion(+)
+ create mode 100644 READMe.md
+pi@raspberrypi:~/RSL/movie-recommender $ git add --all
+pi@raspberrypi:~/RSL/movie-recommender $ git commit -am "add json rules and python program"
+[master b8461ce] add json rules and python program
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 movies.json
+ create mode 100644 movies.py
+pi@raspberrypi:~/RSL/movie-recommender $ git commit -am "finish find function"
+On branch master
+nothing to commit, working tree clean
+pi@raspberrypi:~/RSL/movie-recommender $ git log movies.py
+commit b8461ce23443d91be6b5f5c47101dbc2300aa147 (HEAD -> master)
+Author: hendelshaarawi2 <hend.elshaarawi@hva.nl>
+Date:   Thu Nov 4 14:46:42 2021 +0100
+
+    add json rules and python program
+pi@raspberrypi:~/RSL/movie-recommender $ git checkout b8461ce23443d91be6b5f5c47101dbc2300aa147 movies.py
+pi@raspberrypi:~/RSL/movie-recommender $ commit -am "restore find function"
+bash: commit: command not found
+pi@raspberrypi:~/RSL/movie-recommender $ 
+pi@raspberrypi:~/RSL/movie-recommender $ git commit -am "restore find function"
+On branch master
+nothing to commit, working tree clean
+pi@raspberrypi:~/RSL/movie-recommender $ git status
+On branch master
+nothing to commit, working tree clean
+pi@raspberrypi:~/RSL/movie-recommender $ git checkout -b lidar-version
+Switched to a new branch 'lidar-version'
+pi@raspberrypi:~/RSL/movie-recommender $ git status
+On branch lidar-version
+nothing to commit, working tree clean
+pi@raspberrypi:~/RSL/movie-recommender $ git checkout master
+Switched to branch 'master'
+pi@raspberrypi:~/RSL/movie-recommender $ git merge lidar-version
+Already up to date.
+pi@raspberrypi:~/RSL/movie-recommender $ git remote add origin git@github.com:hendelshaarawi2/movies-recommender.git
+pi@raspberrypi:~/RSL/movie-recommender $ git push -u origin master
+The authenticity of host 'github.com (140.82.121.4)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? y
+Please type 'yes' or 'no': yes 
+Warning: Permanently added 'github.com,140.82.121.4' (RSA) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+pi@raspberrypi:~/RSL/movie-recommender $ 
